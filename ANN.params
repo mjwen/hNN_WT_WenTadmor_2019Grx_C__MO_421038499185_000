@@ -1,0 +1,71 @@
+#cutoff		rcut
+cos   5.5
+
+#==============================================================================
+# symmetry functions
+#==============================================================================
+3 #number of descriptor types
+
+# descriptors     rows        cols  (rows corresponds to the number of hyperparameter sets
+#                                    for a symmetry function, and cols corresponds to
+#                                    the number of hyperparameters in a symmetry function.)
+G1
+
+G2                3           2
+# lambda zeta (hyperparameters for G2, each line representing a set)
+	0.6   0.5
+	0.4   0.3
+	0.2   0.1
+G3                2           1
+# eta (hyperparameters for G1, each line representing a set)
+	0.1
+  0.2
+
+
+
+#==============================================================================
+# ANN structure and parameters
+#
+# Note that the ANN assumes each row of the input `X' is an observation, i.e.
+# the layer is implemented as
+# Y = activation(XW + b) .
+# You may need to transpose your weight matrix if each column of `X' is an
+# observation.
+#==============================================================================
+
+3       # number of layers (excluding input layer, including output layer)
+10 5 1  # number of perceptrons in each layer (last must be 1)
+tanh    # activation function (e.g. tanh, relu, sigmoid)
+
+# weights, input layer and hidden layer 1 (shape(4, 10))
+0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+# biases, input layer and hidden layer 1
+0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1
+
+# weights, hidden layer 1 and hidden layer 2 (shape(10, 5))
+0.1 0.2 0.3 0.4 0.5
+0.1 0.2 0.3 0.4 0.5
+0.1 0.2 0.3 0.4 0.5
+0.1 0.2 0.3 0.4 0.5
+0.1 0.2 0.3 0.4 0.5
+0.1 0.2 0.3 0.4 0.5
+0.1 0.2 0.3 0.4 0.5
+0.1 0.2 0.3 0.4 0.5
+0.1 0.2 0.3 0.4 0.5
+0.1 0.2 0.3 0.4 0.5
+# biases, hidden layer 1 and hidden layer 2
+0.1 0.1 0.1 0.1 0.1
+
+# weights, hidden layer 2 and output layer (shape(5, 1))
+0.1
+0.1
+0.1
+0.1
+0.1
+# biases, hidden layer 2 and output layer
+0.1
