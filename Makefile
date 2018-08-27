@@ -38,7 +38,7 @@ MODEL_NAME          := Artificial_Neural_Network_graphene_C__MO_000000111111_000
 SPECIES_001_NAME    := C
 
 PARAM_FILE_001_NAME := ANN.params
-PARAM_FILE_001_NAME := LJ.params
+PARAM_FILE_002_NAME := LJ.params
 
 # APPEND to compiler option flag lists
 #FFLAGS   +=
