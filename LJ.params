@@ -1,4 +1,4 @@
-C  8.3427  10.0
+C  8.3427  2  4  9.0  10.0  10.0
 
-# species  A  cutoff
+# species  A  r_up_min  r_up_max  r_down_min  r_down_max  cutoff
 
