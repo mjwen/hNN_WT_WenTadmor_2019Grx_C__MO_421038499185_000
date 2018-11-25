@@ -19,34 +19,38 @@
 #
 
 #
-# Copyright (c) 2015, Regents of the University of Minnesota.
+# Copyright (c) 2013--2018, Regents of the University of Minnesota.
 # All rights reserved.
 #
 # Contributors:
+#    Richard Berger
+#    Christoph Junghans
+#    Ryan S. Elliott
+#
+
+#
+# Release: This file is part of the kim-api.git repository.
 #
 
 
-# load all basic KIM make configuration
-ifeq ($(wildcard ../Makefile.KIM_Config),)
-  $(error ../Makefile.KIM_Config does not exist.  Something is wrong with your KIM API package setup)
-endif
-include ../Makefile.KIM_Config
+#
+# Requied preamble
+#
 
-# set model driver specific details
-MODEL_DRIVER_NAME   := Artificial_Neural_Network_graphene__MD_000000111111_000
-MODEL_NAME          := Artificial_Neural_Network_graphene_C__MO_000000111111_000
-SPECIES_001_NAME    := C
+cmake_minimum_required(VERSION 3.4)
 
-PARAM_FILE_001_NAME := ANN.params
-PARAM_FILE_002_NAME := LJ.params
+list(APPEND CMAKE_PREFIX_PATH $ENV{KIM_API_V2_CMAKE_PREFIX_DIR})
+find_package(KIM-API-V2 2.0 REQUIRED CONFIG)
+if(NOT TARGET kim-api)
+  project("${KIM_API_PROJECT_NAME}" VERSION "${KIM_API_VERSION}"
+    LANGUAGES CXX C Fortran)
+endif()
 
-# APPEND to compiler option flag lists
-#FFLAGS   +=
-#CFLAGS   +=
-#CXXFLAGS += -g
-#CXXFLAGS += -fopenmp
-#LDFLAGS  += -fopenmp
-#LDLIBS   +=
+# End preamble
 
-# load remaining KIM make configuration
-include $(KIM_DIR)/$(builddir)/Makefile.ParameterizedModel
+
+add_kim_api_model_library(
+  NAME            "ANN_WenTadmor_2018_C__MO_000000111111_000"
+  DRIVER_NAME     "ANN_WenTadmor__MD_000000111111_000"
+  PARAMETER_FILES "ANN.params" "LJ.params"
+  )
