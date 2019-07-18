@@ -45,7 +45,7 @@ endif()
 
 
 add_kim_api_model_library(
-  NAME            "Hybrid_NN_LJ_WenTadmor_2019_C__MO_000000111111_000"
-  DRIVER_NAME     "Hybrid_NN_LJ__MD_000000111111_000"
+  NAME            "hNN_WT_WenTadmor_2019Grx_C__MO_421038499185_000"
+  DRIVER_NAME     "hNN_WT__MD_435082866799_000"
   PARAMETER_FILES "ANN.params" "LJ.params"
   )
